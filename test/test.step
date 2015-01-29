@@ -1,0 +1,16 @@
+from test_api import test
+test = test()
+test.test__AND__({'span':{'$lt':100,'$gt':90},'n_cmt':{'$lt':100000,'$gt':10000}})
+
+
+
+
+#test
+
+test.test_find_scope()
+test.test__LT__()
+test.test__GT__()
+test.test__EQ__()
+test.test__GTE__()
+test.test__LTE__()
+test.test__IN__()
