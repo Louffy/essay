@@ -11,8 +11,8 @@ class scriptFind:
         self.pf = find()
     
     
-    def find_cata_regex(self, collection, val):
-        return self.pf.__REGEX__(collection, 'cata', val)  
+    def find_cate_regex(self, collection, val):
+        return self.pf.__REGEX__(collection, 'cate', val)  
     
     
     def find_name_regex(self, collection, val):

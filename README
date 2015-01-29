@@ -1,0 +1,67 @@
+#search command
+
+collection key;op;val[s](split by ';')
+
+#key;op;val[s](split by ;) as para
+
+collection paras(split by ' ')
+
+	
+	#collection
+
+	svn\git\hg\bzr (version control system)
+	bug1 (issue tracking system)
+	mman\mbox (mailing list)
+	perl (script)
+
+	
+	#key
+
+	sp (span: time span)
+	bt (begin time)
+	et (end time)
+	nc (number of commit)
+	nb (number of bug)
+	np (number of people)
+	re (repository)
+	pr (project)
+	na (name)
+	ca (category)
+
+	
+	#op
+
+	sc (scope: from A to B)
+	lte (less than and equal)
+	gte (greater than and equal)
+	re (regex)
+
+	
+	#val[s]
+
+	numberA;numberB (for scope: numberA <= x <= numberB)
+	number (for lte and gte)
+	string (for regex)
+
+#examples:
+
+	
+	#log's search
+
+	#svn's projects: 100 months <= span <= 120 months
+	svn sp;sc;100;120
+
+	#git's projects: span >= 100 and commits >= 10000
+	git sp;gte;100 nc;gte;10000
+
+	
+	#bug's search
+
+	#level1: bugs >= 100000
+	bug1 nb;gte;100000
+
+
+	#script's search
+
+	#perl: category = bug
+	perl ca;re;bug

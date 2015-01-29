@@ -183,7 +183,7 @@ class cAPI(object):
         return self.sf.find_name_regex(self.script[lang], arg[0])
         
     def sc_ca_re(self, lang, arg):
-        return self.sf.find_cata_regex(self.script[lang], arg[0])
+        return self.sf.find_cate_regex(self.script[lang], arg[0])
         
         
       
