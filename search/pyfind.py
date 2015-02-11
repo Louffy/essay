@@ -88,7 +88,67 @@ class find:
         for post in posts:
             ret.append(post)
         return ret
-     
+    
+#sort
+
+    def __REGEXs__(self, collection, key, val, sor):
+        posts = self.db[str(collection)].find({str(key) : {'$regex' : str(val)}}).sort(sor)
+        ret = []
+        for post in posts:
+            ret.append(post)
+        return ret
+        
+    def __EQs__(self, collection, key, val, sor):
+        posts = self.db[str(collection)].find({str(key) : val}).sort(sor)
+        ret = []
+        for post in posts:
+            ret.append(post)
+        return ret
+        
+    def __NEs__(self, collection, key, val, sor):
+        posts = self.db[str(collection)].find({str(key) : {'$ne' : val}}).sort(sor)
+        ret = []
+        for post in posts:
+            ret.append(post)
+        return ret
+    
+    def __LTs__(self, collection, key, val, sor):
+        posts = self.db[str(collection)].find({str(key) : {'$lt' : val}}).sort(sor)
+        ret = []
+        for post in posts:
+            ret.append(post)
+        return ret
+        
+    def __GTs__(self, collection, key, val, sor):
+        posts = self.db[str(collection)].find({str(key) : {'$gt' : val}}).sort(sor)
+        ret = []
+        for post in posts:
+            ret.append(post)
+        return ret
+        
+    def __LTEs__(self, collection, key, val, sor):
+        posts = self.db[str(collection)].find({str(key) : {'$lte' : val}}).sort(sor)
+        ret = []
+        for post in posts:
+            ret.append(post)
+        return ret
+    
+    def __GTEs__(self, collection, key, val, sor):
+        posts = self.db[str(collection)].find({str(key) : {'$gte' : val}}).sort(sor)
+        ret = []
+        for post in posts:
+            ret.append(post)
+        return ret
+        
+    
+    def __ANDs__(self, collection, arg, sor):
+        posts = self.db[str(collection)].find(arg).sort(sor)
+        ret = []
+        for post in posts:
+            ret.append(post)
+        return ret
+         
+
     def get_header(self, collection):
         posts = self.db[str(collection)].find_one({})
         ret = []
