@@ -2,11 +2,12 @@
 #usage ./insert_script "file_name"                                                                
 
 import sys
+import time
 sys.path.append(sys.path[0] + '/..')
 from service.mongoDB import mongoDB
 import service.mod_config
 
-header=['name','loc','cate','in','out','des']
+header=['name','loc','cate','in','out','des','_id']
 dbname = service.mod_config.getConfig('db.conf','database','dbname')
 db = mongoDB(dbname)
 
@@ -20,6 +21,7 @@ def readData():
             sp = line.split(';')
             for i in range(0, len(sp)):
                 item[header[i]] = sp[i]
+            item[header[-1]] = time.time()
             ret.append(item)
         return ret
     except:

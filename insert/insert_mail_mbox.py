@@ -2,11 +2,12 @@
 #usage ./insert_mail "file_name" "maillist"                                                    
 
 import sys
+import time
 sys.path.append(sys.path[0] + '/..')
 from service.mongoDB import mongoDB
 import service.mod_config
 
-header=['mlist','repo','proj','n_mail','n_peo','n_fr','n_to','loc']
+header=['mlist','repo','proj','n_mail','n_peo','n_fr','n_to','loc','_id']
 dict_mlist={'mbox':'mbox_info', 'mailman':'mailman_info'}
 dbname = service.mod_config.getConfig('db.conf','database','dbname')
 db = mongoDB(dbname)
@@ -24,6 +25,7 @@ def readData():
         sp[6] = int(sp[6])
         for i in range(0, len(sp)):
             item[header[i]] = sp[i]
+        item[header[-1]] = time.time()
         ret.append(item)
     return ret
 
