@@ -12,17 +12,17 @@ class update:
         self.db = mongoDB(dbname).get_db()
     
     def update(self, collection, ids, arg):
-        header = self.get_header(collection) 
         for key in arg.keys():
             posts = self.db[str(collection)].update({"_id" : ids},{"$set":{key : arg[key]}})
         return self.db[str(collection)].find({"_id" : ids})[0]
 
     def insert(self, collection, arg):
         header = self.get_header(collection)
-
+        posts = self.db[str(collection)].insert(arg)           
 
     def delete(self, collection, ids):
         header = self.get_header(collection)
+        posts = self.db[str(colletion)].delete({"_id" : ids})
 
     def get_header(self, collection):
         posts = self.db[str(collection)].find_one({})
