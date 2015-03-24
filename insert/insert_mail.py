@@ -7,7 +7,7 @@ sys.path.append(sys.path[0] + '/..')
 from service.mongoDB import mongoDB
 import service.mod_config
 
-header=['mlist','repo','proj','n_mail','n_peo','loc','_id']
+header=['mlist','repo','proj','n_mail','n_peo','loc','_id','script']
 dict_mlist={'mbox':'mbox_info', 'mailman':'mailman_info'}
 dbname = service.mod_config.getConfig('db.conf','database','dbname')
 db = mongoDB(dbname)

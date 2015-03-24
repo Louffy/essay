@@ -1,5 +1,5 @@
 #!/usr/bin/python
-#usage ./insert_script "file_name"                                                                
+#usage ./insert_bug_level1 "file_name"                                                            
 
 import sys
 import time
@@ -7,7 +7,7 @@ sys.path.append(sys.path[0] + '/..')
 from service.mongoDB import mongoDB
 import service.mod_config
 
-header=['its','repo','n_peo','n_bug','b_time','e_time','span','loc','_id']
+header=['its','repo','n_peo','n_bug','b_time','e_time','span','loc','_id','script']
 dbname = service.mod_config.getConfig('db.conf','database','dbname')
 db = mongoDB(dbname)
 
@@ -27,7 +27,8 @@ def readData():
             sp[6] = int(sp[6])
             for i in range(0, len(sp)):
                 item[header[i]] = sp[i]
-            item[header[-1]] = time.time()
+            item[header[-2]] = time.time()
+            item[header[-1]] = ''
             ret.append(item)
         return ret
     except:

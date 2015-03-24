@@ -7,7 +7,7 @@ sys.path.append(sys.path[0] + '/..')
 from service.mongoDB import mongoDB
 import service.mod_config
 
-header=['vcs','repo','prj','n_peo','n_cmt','b_time','e_time','span','log_loc','src_loc','_id']
+header=['vcs','repo','prj','n_peo','n_cmt','b_time','e_time','span','log_loc','src_loc','_id','script']
 dict_vcs={'svn':'svn_info', 'git':'git_info', 'hg':'hg_info', 'bazaar':'baz_info'}
 dbname = service.mod_config.getConfig('db.conf','database','dbname')
 db = mongoDB(dbname)
@@ -26,7 +26,8 @@ def readData():
         sp[7] = int(sp[7])
         for i in range(0, len(sp)):
             item[header[i]] = sp[i]
-        item[header[-1]] = time.time()
+        item[header[-2]] = time.time()
+        item[header[-1]] = ''
         ret.append(item)
     return ret
 
